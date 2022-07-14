@@ -20,26 +20,15 @@ jobs:
       - run:
           name: "test"
           command: "npm run test"
+      - run:
+          name: "make folder"
+          command: "mkdir test_results test-out"
       - store_test_results:
           path: test_results
       - store_artifacts:
           path: test-out 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-build:
-  working_directory: /tmp
-  steps:
-    - run:
-        name: Creating Dummy Artifacts
-        command: |
-          echo "my artifact file" > /tmp/art-1;
-          mkdir /tmp/artifacts;
-          echo "my artifact files in a dir" > /tmp/artifacts/art-2;
-    - store_artifacts:
-        path: /tmp/art-1
-        destination: artifact-file
-    - store_artifacts:
-        path: /tmp/artifacts
 
 workflows:
   say-hello-workflow:
