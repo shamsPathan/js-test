@@ -23,10 +23,15 @@ jobs:
       - run:
           name: "make folder"
           command: "mkdir test_results test-out"
-      - store_test_results:
-          path: test_results
       - store_artifacts:
-          path: test-out 
+          path: test-results.xml
+          prefix: tests 
+      - store_artifacts:
+          path: coverage 
+          prefix: coverage
+      - store_test_results:
+          path: test_results.xml
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 
