@@ -21,7 +21,9 @@ jobs:
           name: "test"
           command: "npm run test"
       - store_test_results:
-          path: test_results.xml
+          path: test_results
+      - store_artifacts:
+          path: test-out 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
